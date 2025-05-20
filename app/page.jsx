@@ -21,7 +21,7 @@ const Home = () => {
               AI & Data Science Solutions for Growth in Retail and E-Commerce.
             </p>
             {/* btn and socials */}
-            <div className="flex flex-col xl:flex-row items-center gap-8">
+            {/* <div className="flex flex-col xl:flex-row items-center gap-8">
               <Button
                 variant="outline"
                 size="lg"
@@ -36,7 +36,7 @@ const Home = () => {
                   iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
           {/* photo */}
           <div className="order-1 xl:order-none mb-8 xl:mb-0">

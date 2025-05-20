@@ -87,8 +87,7 @@ const Contact = () => {
             >
               <h3 className="text-4xl text-accent">Let&apos;s work together</h3>
               <p className="text-white/60">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
-                nihil sapiente pariatur id totam.
+                Let’s build something impactful together. Whether you’re looking to automate workflows, improve retention, or visualize performance, I’m here to help.
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
