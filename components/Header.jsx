@@ -15,8 +15,8 @@ const Header = () => {
           <Image
             src="/assets/logo_green.png"
             alt="Alaa Logo"
-            width={32}
-            height={32}
+            width={70}
+            height={70}
             className="w-8 h-8 md:w-10 md:h-10 xl:w-12 xl:h-12"
             priority
           />

@@ -22,15 +22,16 @@ const Photo = () => {
           }}
           className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
         >
-          <Image
-            src="/assets/lolo.png"
-            priority
-            quality={100}
-            fill
-            alt="profile"
-            className="object-contain"
-            onError={(e) => { e.target.style.display = 'none'; }}
-          />
+<Image
+  src="/assets/lolo.png"
+  priority
+  quality={100}
+  fill
+  alt="profile"
+  className="object-contain"
+  sizes="(max-width: 640px) 100vw, 640px"  // Adjust the sizes attribute based on your layout needs
+  onError={(e) => { e.target.style.display = 'none'; }}
+/>
         </motion.div>
 
         {/* circle */}
