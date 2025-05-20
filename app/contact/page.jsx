@@ -16,6 +16,9 @@ import {
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
+import emailjs from "emailjs-com";
+import { useRef } from "react";
+
 const info = [
   {
     icon: <FaPhoneAlt />,
@@ -37,6 +40,27 @@ const info = [
 import { motion } from "framer-motion";
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_q9trfa7", // replace with your EmailJS service ID
+        "template_kxnr2jh", // replace with your EmailJS template ID
+        form.current,
+        "12ZKGYp6nDokJpBC_" // replace with your EmailJS user ID (public key)
+      )
+      .then(
+        (result) => {
+          alert("Message sent!");
+        },
+        (error) => {
+          alert("Failed to send message, please try again.");
+        }
+      );
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -50,7 +74,11 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+            >
               <h3 className="text-4xl text-accent">Let&apos;s work together</h3>
               <p className="text-white/60">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
@@ -58,32 +86,33 @@ const Contact = () => {
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input name="firstname" type="text" placeholder="Firstname" />
+                <Input name="lastname" type="text" placeholder="Lastname" />
+                <Input name="email" type="email" placeholder="Email address" />
+                <Input name="phone" type="text" placeholder="Phone number" />
               </div>
               {/* select */}
-              <Select>
+              <Select name="service">
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">UI/UX Design</SelectItem>
-                    <SelectItem value="mst">Logo Design</SelectItem>
+                    <SelectItem value="Web Development">Web Development</SelectItem>
+                    <SelectItem value="UI/UX Design">UI/UX Design</SelectItem>
+                    <SelectItem value="Logo Design">Logo Design</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
               {/* textarea */}
               <Textarea
+                name="message"
                 className="h-[200px]"
                 placeholder="Type your message here."
               />
               {/* btn */}
-              <Button size="md" className="max-w-40">
+              <Button type="submit" size="md" className="max-w-40">
                 Send message
               </Button>
             </form>
