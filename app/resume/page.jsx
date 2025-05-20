@@ -19,11 +19,11 @@ const about = {
   info: [
     {
       fieldName: "Name",
-      fieldValue: "Luke Coleman",
+      fieldValue: "Alaa Allam",
     },
     {
       fieldName: "Phone",
-      fieldValue: "(+40) 321 654 678",
+      fieldValue: "(+20) 1007777344",
     },
     {
       fieldName: "Experience",
@@ -31,15 +31,15 @@ const about = {
     },
     {
       fieldName: "Skype",
-      fieldValue: "luke.01",
+      fieldValue: "alaaeallam",
     },
     {
       fieldName: "Nationality",
-      fieldValue: "American",
+      fieldValue: "Egyptian",
     },
     {
       fieldName: "Email",
-      fieldValue: "luke.01@gmail.com",
+      fieldValue: "alaaeallam@gmail.com",
     },
     {
       fieldName: "Freelance",
@@ -47,7 +47,7 @@ const about = {
     },
     {
       fieldName: "Languages",
-      fieldValue: "English, Spanish",
+      fieldValue: "Arabic, English",
     },
   ],
 };
