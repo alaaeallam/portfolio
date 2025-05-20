@@ -27,8 +27,9 @@ const Photo = () => {
             priority
             quality={100}
             fill
-            alt=""
+            alt="profile"
             className="object-contain"
+            onError={(e) => { e.target.style.display = 'none'; }}
           />
         </motion.div>
 
