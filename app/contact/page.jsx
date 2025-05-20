@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
 import {
   Select,
   SelectContent,
@@ -13,11 +12,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-
 import emailjs from "emailjs-com";
 import { useRef } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const info = [
   {
@@ -41,22 +39,30 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   const form = useRef();
+  const { toast } = useToast();
 
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_q9trfa7", // replace with your EmailJS service ID
-        "template_kxnr2jh", // replace with your EmailJS template ID
+        "service_q9trfa7",
+        "template_kxnr2jh",
         form.current,
-        "12ZKGYp6nDokJpBC_" // replace with your EmailJS user ID (public key)
+        "12ZKGYp6nDokJpBC_"
       )
       .then(
         (result) => {
-          alert("Message sent!");
+          toast({
+            title: "Message sent!",
+            description: "Thank you for reaching out. I will get back to you soon.",
+          });
         },
         (error) => {
-          alert("Failed to send message, please try again.");
+          toast({
+            title: "Failed to send message",
+            description: "Please try again.",
+            variant: "destructive",
+          });
         }
       );
   };
