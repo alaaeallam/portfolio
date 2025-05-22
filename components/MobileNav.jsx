@@ -50,7 +50,7 @@ const MobileNav = () => {
         <div className="mt-32 mb-40 text-center text-2xl flex justify-center items-center">
           <Link href="/" >
             <Image
-              src="/assets/logo_green.png"
+              src="/assets/logo_green.webp"
               alt="Alaa Logo"
               width={128}
               height={128}

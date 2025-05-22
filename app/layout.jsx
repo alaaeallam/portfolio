@@ -14,15 +14,42 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrainsMono",
 });
 
+
 export const metadata = {
-  title: "Alaa Allam – AI & Data Science for Retail and E-Commerce",
-  description: "Business-focused Data Scientist and AI Consultant specializing in customer retention, financial analysis, and automation for retail and E-commerce.",
+  title: "Alaa Allam – Data Scientist & AI Consultant",
+  description: "Helping businesses grow smarter through AI, automation, and data insights.",
+  keywords: ["Data Scientist", "AI Consultant", "Portfolio", "Alaa Allam"],
+  openGraph: {
+    title: "Alaa Allam – Data Science Portfolio",
+    description: "Explore my projects, skills, and experience in AI & Data Science.",
+    url: "https://www.alaaeallam.com",
+    siteName: "Alaa Allam",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Alaa Allam Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="canonical" href="https://www.alaaeallam.com/" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Alaa Allam",
+          "url": "https://www.alaaeallam.com",
+          "sameAs": ["https://www.linkedin.com/in/alaaallam"],
+          "jobTitle": "Data Scientist & AI Consultant"
+        }` }} />
         {/* Google Analytics */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-6FRVK3KR4B`}
