@@ -25,11 +25,11 @@ const Photo = () => {
 <Image
   src="/assets/lolo.webp"
   priority
-  quality={100}
+  quality={75}
   fill
   alt="profile"
+  sizes="(max-width: 640px) 100vw, 640px"
   className="object-contain"
-  sizes="(max-width: 640px) 100vw, 640px"  // Adjust the sizes attribute based on your layout needs
   onError={(e) => { e.target.style.display = 'none'; }}
 />
         </motion.div>
