@@ -16,6 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 
 export const metadata = {
+  metadataBase: new URL("https://www.alaaeallam.com"),
   title: "Alaa Allam – Data Scientist & AI Consultant",
   description: "Helping businesses grow smarter through AI, automation, and data insights.",
   keywords: ["Data Scientist", "AI Consultant", "Portfolio", "Alaa Allam"],
@@ -63,7 +64,7 @@ export default function RootLayout({ children }) {
     src="https://www.googletagmanager.com/gtag/js?id=G-6FRVK3KR4B"
     strategy="afterInteractive"
   />
-  <Script id="google-analytics" strategy="afterInteractive">
+  <Script id="google-analytics" strategy="lazyOnload">
     {`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

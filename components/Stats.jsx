@@ -29,15 +29,17 @@ const Stats = () => {
           {stats.map((item, index) => {
             return (
               <div
-                className="flex-1 flex gap-4 items-center justify-center xl:justify-start"
+                className="flex-1 flex gap-4 items-center justify-center xl:justify-start min-w-[200px] min-h-[80px]"
                 key={index}
               >
-                <CountUp
-                  end={item.num}
-                  duration={5}
-                  delay={2}
-                  className="text-4xl xl:text-6xl font-extrabold"
-                />
+                <div className="min-w-[80px] min-h-[50px] flex items-center justify-center">
+                  <CountUp
+                    end={item.num}
+                    duration={5}
+                    delay={2}
+                    className="text-4xl xl:text-6xl font-extrabold"
+                  />
+                </div>
                 <p
                   className={`${
                     item.text.length < 15 ? "max-w-[100px]" : "max-w-[150px]"

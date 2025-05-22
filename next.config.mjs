@@ -5,6 +5,12 @@ const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-const nextConfig = {};
+const nextConfig = {
+  experimental: {
+    esmExternals: true
+  },
+  swcMinify: true,
+  transpilePackages: [],
+};
 
 export default withBundleAnalyzer(nextConfig);
