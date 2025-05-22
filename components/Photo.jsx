@@ -1,9 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Image from "next/image";
 
 const Photo = () => {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <div className="w-full h-full relative">
       <motion.div
@@ -22,16 +25,23 @@ const Photo = () => {
           }}
           className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
         >
-<Image
-  src="/assets/lolo.webp"
-  priority
-  quality={75}
-  fill
-  alt="profile"
-  sizes="(max-width: 640px) 100vw, 640px"
-  className="object-contain"
-  onError={(e) => { e.target.style.display = 'none'; }}
-/>
+          {!imgError ? (
+            <Image
+              src="/assets/lolo.webp"
+              priority
+              quality={75}
+              fill
+              alt="profile"
+              sizes="(max-width: 640px) 100vw, 640px"
+              className="object-contain"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            // fallback (could be a placeholder image or nothing)
+            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+              <span>Image not found</span>
+            </div>
+          )}
         </motion.div>
 
         {/* circle */}
