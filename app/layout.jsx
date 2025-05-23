@@ -14,7 +14,6 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrainsMono",
 });
 
-
 export const metadata = {
   metadataBase: new URL("https://www.alaaeallam.com"),
   title: "Alaa Allam – Data Scientist & AI Consultant",
@@ -42,37 +41,34 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="canonical" href="https://www.alaaeallam.com/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://www.alaaeallam.com/" />
+        <link rel="preload" as="image" href="/assets/logo_green.webp" type="image/webp" />
 
-  {/* Preload main font and hero image */}
-  <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-  <link rel="preload" as="image" href="/assets/logo_green.webp" type="image/webp" />
+        {/* Structured Data */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Alaa Allam",
+          "url": "https://www.alaaeallam.com",
+          "sameAs": ["https://www.linkedin.com/in/alaaallam"],
+          "jobTitle": "Data Scientist & AI Consultant"
+        }` }} />
 
-  {/* Structured Data */}
-  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `{
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Alaa Allam",
-    "url": "https://www.alaaeallam.com",
-    "sameAs": ["https://www.linkedin.com/in/alaaallam"],
-    "jobTitle": "Data Scientist & AI Consultant"
-  }` }} />
-
-  {/* Google Analytics */}
-  <Script
-    src="https://www.googletagmanager.com/gtag/js?id=G-6FRVK3KR4B"
-    strategy="afterInteractive"
-  />
-  <Script id="google-analytics" strategy="lazyOnload">
-    {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6FRVK3KR4B');
-    `}
-  </Script>
-</head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-6FRVK3KR4B"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6FRVK3KR4B');
+          `}
+        </Script>
+      </head>
       <body className={jetbrainsMono.variable}>
         <Header />
         <StairTransition />
