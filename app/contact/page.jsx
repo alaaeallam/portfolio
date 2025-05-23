@@ -68,6 +68,7 @@ const Contact = () => {
   };
 
   return (
+    
     <motion.section
       initial={{ opacity: 0 }}
       animate={{
@@ -85,7 +86,7 @@ const Contact = () => {
               onSubmit={sendEmail}
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
             >
-              <h3 className="text-4xl text-accent">Let&apos;s work together</h3>
+              <h1 className="text-4xl text-accent">Let&apos;s work together</h1>
               <p className="text-white/60">
                 Let’s build something impactful together. Whether you’re looking to automate workflows, improve retention, or visualize performance, I’m here to help.
               </p>
