@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.alaaeallam.com
+
+# Sitemaps
+Sitemap: https://www.alaaeallam.com/sitemap.xml
