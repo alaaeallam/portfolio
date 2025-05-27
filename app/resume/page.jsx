@@ -1,5 +1,5 @@
 "use client";
-
+import React, { useState } from "react";
 import {
   FaHtml5,
   FaCss3,
@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 
 import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import { motion, AnimatePresence } from "framer-motion";
 
 // about data
 const about = {
@@ -139,35 +140,35 @@ const skills = {
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
   skillList: [
     {
-      icon: <FaHtml5 />,
+      icon: FaHtml5,
       name: "html 5",
     },
     {
-      icon: <FaCss3 />,
+      icon: FaCss3,
       name: "css 3",
     },
     {
-      icon: <FaJs />,
+      icon: FaJs,
       name: "javascript",
     },
     {
-      icon: <FaReact />,
+      icon: FaReact,
       name: "react.js",
     },
     {
-      icon: <SiNextdotjs />,
+      icon: SiNextdotjs,
       name: "next.js",
     },
     {
-      icon: <SiTailwindcss />,
+      icon: SiTailwindcss,
       name: "tailwind.css",
     },
     {
-      icon: <FaNodeJs />,
+      icon: FaNodeJs,
       name: "node.js",
     },
     {
-      icon: <FaFigma />,
+      icon: FaFigma,
       name: "figma",
     },
   ],
@@ -183,9 +184,11 @@ import {
 } from "@/components/ui/tooltip";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { motion } from "framer-motion";
+
 
 const Resume = () => {
+  const [chatOpen, setChatOpen] = useState(false);
+  const [isIframeLoading, setIframeLoading] = useState(true);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -282,26 +285,27 @@ const Resume = () => {
                     {skills.description}
                   </p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                  {skills.skillList.map((skill, index) => {
-                    return (
-                      <li key={index}>
-                        <TooltipProvider delayDuration={100}>
+                <TooltipProvider delayDuration={100}>
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
+                    {skills.skillList.map((skill, index) => {
+                      const Icon = skill.icon;
+                      return (
+                        <li key={index}>
                           <Tooltip>
                             <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
                               <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                                {skill.icon}
+                                <Icon />
                               </div>
                             </TooltipTrigger>
                             <TooltipContent>
                               <p className="capitalize">{skill.name}</p>
                             </TooltipContent>
                           </Tooltip>
-                        </TooltipProvider>
-                      </li>
-                    );
-                  })}
-                </ul>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </TooltipProvider>
               </div>
             </TabsContent>
 
@@ -333,6 +337,44 @@ const Resume = () => {
           </div>
         </Tabs>
       </div>
+      {/* Floating Chat Button */}
+<button
+  onClick={() => setChatOpen(!chatOpen)}
+  className="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white px-5 py-3 rounded-full shadow-lg hover:bg-emerald-600"
+>
+  {chatOpen ? "Close Chat" : "Chat with Me"}
+</button>
+
+{/* Chatbot iframe popup */}
+ <AnimatePresence>
+  {chatOpen && (
+    <motion.div
+      key="chatbot"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 40 }}
+      transition={{ duration: 0.3 }}
+      className="fixed bottom-24 right-6 w-[360px] h-[600px] bg-white rounded-xl shadow-2xl z-40 border border-gray-300 overflow-hidden"
+    >
+      
+<div className="relative w-full h-full">
+  {isIframeLoading && (
+    <div className="absolute inset-0 flex items-center justify-center bg-white z-50">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-emerald-500"></div>
+    </div>
+  )}
+  <iframe
+    src="https://cv-chatbot-pmmw.onrender.com/"
+    onLoad={() => setIframeLoading(false)}
+    title="Alaa Chatbot"
+    className="w-full h-full border-none"
+    allow="microphone; camera"
+  />
+</div>
+
+    </motion.div>
+  )}
+</AnimatePresence>
     </motion.div>
   );
 };
