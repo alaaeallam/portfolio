@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+    "My name is Alaa Allam. I’m a strategic finance leader, data scientist, and customer experience expert. I’m from Cairo, Egypt, where I’ve built a career bridging business and analytics across telecom, retail, and food sectors.I’m deeply passionate about using AI to solve real business problems—from predicting customer churn to optimizing financial performance. Outside of work.",
   info: [
     {
       fieldName: "Name",
@@ -58,41 +58,14 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My Experience",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+    "Career spanning strategy, analytics, AI integration, and leadership roles across telecom and F&B sectors.",
   items: [
-    {
-      company: "Tech Solutions Inc.",
-      position: "Full Stack Developer",
-      duration: "2022 - Present",
-    },
-    {
-      company: "Web Design Studio",
-      position: "Front-End Developer Intern",
-      duration: "Summer 2021",
-    },
-    {
-      company: "E-commerce Startup",
-      position: "Freelance Web Developer",
-      duration: "2020 - 2021",
-    },
-    {
-      company: "Tech Academy",
-      position: "Teaching Assistant",
-      duration: "2019 - 2020",
-    },
-    {
-      company: "Digital Agency",
-      position: "UI/UX Designer",
-      duration: "2018 - 2019",
-    },
-    {
-      company: "Software Development Firm",
-      position: "Junior Developer",
-      duration: "2017 - 2018",
-    },
+    { company: "Telecommunications Sector", position: "Senior Manager – Strategic Finance & Analytics", duration: "2018 – Present" },
+    { company: "Retail & F&B Sectors", position: "Data Science Consultant", duration: "2020 – Present" },
+    { company: "Telecommunications Sector", position: "Customer Relations Senior Manager", duration: "2009 – 2018" },
+    { company: "Telecommunications Sector", position: "Sales & Support Management Roles", duration: "2003 – 2009" }
   ],
 };
-
 // education data
 const education = {
   icon: "/assets/resume/cap.svg",
@@ -135,45 +108,21 @@ const education = {
 
 // skills data
 const skills = {
-  title: "My skills",
+  title: "My Skills",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam, sunt explicabo inventore.",
+    "Technical, analytical, and business tools mastered over years of experience in digital transformation and AI.",
   skillList: [
-    {
-      icon: FaHtml5,
-      name: "html 5",
-    },
-    {
-      icon: FaCss3,
-      name: "css 3",
-    },
-    {
-      icon: FaJs,
-      name: "javascript",
-    },
-    {
-      icon: FaReact,
-      name: "react.js",
-    },
-    {
-      icon: SiNextdotjs,
-      name: "next.js",
-    },
-    {
-      icon: SiTailwindcss,
-      name: "tailwind.css",
-    },
-    {
-      icon: FaNodeJs,
-      name: "node.js",
-    },
-    {
-      icon: FaFigma,
-      name: "figma",
-    },
+    { icon: "🛠️", name: "Python" },
+    { icon: "📊", name: "Excel" },
+    { icon: "🧾", name: "ERP Systems" },
+    { icon: "📈", name: "Financial Modeling" },
+    { icon: "📉", name: "BI Tools" },
+    { icon: "🤖", name: "ML & AI" },
+    { icon: "💾", name: "SQL" },
+    { icon: "📞", name: "CRM" },
+    { icon: "📊", name: "Data Visualization" },
   ],
 };
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import {
@@ -287,24 +236,25 @@ const Resume = () => {
                 </div>
                 <TooltipProvider delayDuration={100}>
                   <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                    {skills.skillList.map((skill, index) => {
-                      const Icon = skill.icon;
-                      return (
-                        <li key={index}>
-                          <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                                <Icon />
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="capitalize">{skill.name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </li>
-                      );
-                    })}
-                  </ul>
+  {skills.skillList.map((skill, index) => (
+  <li key={index} className="flex flex-col items-center gap-2">
+    <TooltipProvider delayDuration={100}>
+      <Tooltip>
+        <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+          <span className="text-4xl group-hover:text-accent transition-all duration-300">
+            {skill.icon}
+          </span>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p className="capitalize">{skill.name}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+    <p className="text-sm capitalize text-white/80">{skill.name}</p>
+  </li>
+))}
+
+</ul>
                 </TooltipProvider>
               </div>
             </TabsContent>
@@ -342,7 +292,7 @@ const Resume = () => {
   onClick={() => setChatOpen(!chatOpen)}
   className="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white px-5 py-3 rounded-full shadow-lg hover:bg-emerald-600"
 >
-  {chatOpen ? "Close Chat" : "Chat with Me"}
+  {chatOpen ? "Close Chat" : "Chat with CV"}
 </button>
 
 {/* Chatbot iframe popup */}
